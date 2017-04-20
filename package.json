@@ -1,0 +1,22 @@
+{
+  "name": "swagger-param-sanitizer",
+  "version": "1.0.1",
+  "description": "Takes in raw string params from requests and parses them into the correct types according to the swagger doc",
+  "main": "sanitizer.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewfulrich/swaggerParamSanitizer.git"
+  },
+  "author": "Andrew Ulrich",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewfulrich/swaggerParamSanitizer/issues"
+  },
+  "homepage": "https://github.com/andrewfulrich/swaggerParamSanitizer#readme",
+  "dependencies": {
+    "swagger-param-parser": "^1.0.0"
+  }
+}
