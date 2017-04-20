@@ -31,7 +31,6 @@
 const swaggerParamParser = require('swagger-param-parser')
 module.exports= function makeSanitizer(swagger) {
   return (req, res, next) => {
-    console.log(req)
     var swaggerParams = swaggerParamParser.getSwaggerParams(req, swagger)
     var paramsSchema = swaggerParamParser.swaggerParamsToSchema(swaggerParams)
     var params = Object.assign(req.params, req.body, req.query)
