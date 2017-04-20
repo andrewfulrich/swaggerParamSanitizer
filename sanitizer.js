@@ -31,6 +31,7 @@
 const swaggerParamParser = require('swagger-param-parser')
 module.exports= function makeSanitizer(swagger) {
   return (req, res, next) => {
+    console.log(req)
     var swaggerParams = swaggerParamParser.getSwaggerParams(req, swagger)
     var paramsSchema = swaggerParamParser.swaggerParamsToSchema(swaggerParams)
     var params = Object.assign(req.params, req.body, req.query)
@@ -47,7 +48,11 @@ module.exports= function makeSanitizer(swagger) {
             params[paramName] = params[paramName] == '' ? undefined : parseInt(params[paramName])
             break;
           case 'boolean':
-            params[paramName] = params[paramName] == '' ? undefined : Boolean(params[paramName])
+            let val=Boolean(params[paramName])
+            if(params[paramName].toLowerCase() == 'false') {
+              val=false
+            }
+            params[paramName] = params[paramName] == '' ? undefined : val
             break;
         }
         if (req.params[paramName] != undefined) {

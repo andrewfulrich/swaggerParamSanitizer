@@ -1,0 +1,346 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "test",
+    "version": "1.0"
+  },
+  "basePath": "/api",
+  "paths": {
+    "/testNode0": {
+      "get": {
+        "operationId": "findTestNode0",
+        "x-swagger-router-controller": "testNode0",
+        "summary": "find testNode0",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "max number of results to return, set to 0 for no max",
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "return all results after a certain offset",
+            "type": "integer",
+            "minimum": 0
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "required": false,
+            "description": "sort by this field, defaults to sorting by id",
+            "type": "string",
+            "enum": [
+              "id",
+              "testEdge1",
+              "testEdge2"
+            ]
+          },
+          {
+            "name": "isAscOrder",
+            "in": "query",
+            "required": false,
+            "description": "whether to sort in ascending order or descending order",
+            "type": "boolean"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "testEdge1",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "testEdge2",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 GET OK response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rowCount": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/testNode0"
+                  }
+                }
+              },
+              "limit": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "max number of results to return, set to 0 for no max"
+              },
+              "offset": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "return all results after a certain offset"
+              },
+              "orderBy": {
+                "type": "string",
+                "enum": [
+                  "id",
+                  "testEdge1",
+                  "testEdge2"
+                ],
+                "description": "sort by this field, defaults to sorting by id"
+              },
+              "isAscOrder": {
+                "type": "boolean",
+                "description": "whether to sort in ascending order or descending order"
+              }
+            }
+          },
+          "404": {
+            "description": "404 (Not Found) The requested resource was not found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "insertTestNode0",
+        "x-swagger-router-controller": "testNode0",
+        "summary": "insert a new testNode0",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "form",
+            "type": "string"
+          },
+          {
+            "name": "testEdge1",
+            "in": "form",
+            "type": "string"
+          },
+          {
+            "name": "testEdge2",
+            "in": "form",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "201 (Created), 'Location' header with link to /insertedObject/{id} containing new ID.",
+            "headers": {
+              "location": {
+                "type": "string",
+                "description": "the url at which one can view the newly created testNode0"
+              }
+            }
+          },
+          "404": {
+            "description": "404 (Not Found) The requested resource was not found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/testNode0/{id}": {
+      "get": {
+        "operationId": "getTestNode0",
+        "x-swagger-router-controller": "testNode0",
+        "summary": "get testNode0",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 GET OK response",
+            "schema": {
+              "$ref": "#/definitions/testNode0"
+            }
+          },
+          "404": {
+            "description": "404 (Not Found) The requested resource was not found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "updateTestNode0",
+        "x-swagger-router-controller": "testNode0",
+        "summary": "update a given testNode0",
+        "parameters": [
+          {
+            "name": "testEdge1",
+            "in": "form",
+            "type": "string"
+          },
+          {
+            "name": "testEdge2",
+            "in": "form",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204 (No Content) The server successfully processed the request and is not returning any content."
+          },
+          "404": {
+            "description": "404 (Not Found) The requested resource was not found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "deleteTestNode0",
+        "x-swagger-router-controller": "testNode0",
+        "summary": "delete a given testNode0",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "204 (No Content) The server successfully processed the request and is not returning any content."
+          },
+          "404": {
+            "description": "404 (Not Found) The requested resource was not found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/testNode0/{id}/breadcrumbs": {
+      "get": {
+        "operationId": "breadcrumbsTestNode0",
+        "x-swagger-router-controller": "testNode0",
+        "summary": "get the breadcrumb path to testNode0",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 GET OK response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "table": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404 (Not Found) The requested resource was not found"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "consumes": [
+    "application/x-www-form-urlencoded"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "testNode0": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "testEdge1": {
+          "type": "string"
+        },
+        "testEdge2": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
