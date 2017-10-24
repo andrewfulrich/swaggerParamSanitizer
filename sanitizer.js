@@ -36,31 +36,36 @@ module.exports= function makeSanitizer(swagger) {
     var params = Object.assign(req.params, req.body, req.query)
     try {
       Object.keys(paramsSchema.properties).forEach((paramName) => {
-        if (params[paramName] == undefined) {
+        if (params[paramName] === undefined && paramsSchema.properties[paramName].default !== undefined) {
+          req.params[paramName]=paramsSchema.properties[paramName].default
           return
         }
-        switch (paramsSchema.properties[paramName].type) {
-          case 'number':
-            params[paramName] = params[paramName] == '' ? undefined : parseFloat(params[paramName])
-            break;
-          case 'integer':
-            params[paramName] = params[paramName] == '' ? undefined : parseInt(params[paramName])
-            break;
-          case 'boolean':
-            let val=Boolean(params[paramName])
-            if(params[paramName].toLowerCase() == 'false') {
-              val=false
-            }
-            params[paramName] = params[paramName] == '' ? undefined : val
-            break;
+        if(params[paramName] !== '' && params[paramName] !== undefined) {
+          switch (paramsSchema.properties[paramName].type) {
+            case 'number':
+              params[paramName] = parseFloat(params[paramName])
+              break;
+            case 'integer':
+              params[paramName] = parseInt(params[paramName])
+              break;
+            case 'boolean':
+              let val=Boolean(params[paramName])
+              if(params[paramName].toLowerCase() === 'false') {
+                val=false
+              }
+              params[paramName] = val
+              break;
+          }
         }
-        if (req.params[paramName] != undefined) {
+
+
+        if (req.params[paramName] !== undefined) {
           req.params[paramName] = params[paramName]
         }
-        if (req.body[paramName] != undefined) {
+        if (req.body[paramName] !== undefined) {
           req.body[paramName] = params[paramName]
         }
-        if (req.query[paramName] != undefined) {
+        if (req.query[paramName] !== undefined) {
           req.query[paramName] = params[paramName]
         }
       })

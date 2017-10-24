@@ -18,7 +18,8 @@
             "required": false,
             "description": "max number of results to return, set to 0 for no max",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "default":10
           },
           {
             "name": "offset",
@@ -26,7 +27,8 @@
             "required": false,
             "description": "return all results after a certain offset",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "default": 0
           },
           {
             "name": "orderBy",
@@ -38,7 +40,8 @@
               "id",
               "testEdge1",
               "testEdge2"
-            ]
+            ],
+            "default":"id"
           },
           {
             "name": "isAscOrder",
@@ -82,29 +85,6 @@
                     "$ref": "#/definitions/testNode0"
                   }
                 }
-              },
-              "limit": {
-                "type": "integer",
-                "minimum": 0,
-                "description": "max number of results to return, set to 0 for no max"
-              },
-              "offset": {
-                "type": "integer",
-                "minimum": 0,
-                "description": "return all results after a certain offset"
-              },
-              "orderBy": {
-                "type": "string",
-                "enum": [
-                  "id",
-                  "testEdge1",
-                  "testEdge2"
-                ],
-                "description": "sort by this field, defaults to sorting by id"
-              },
-              "isAscOrder": {
-                "type": "boolean",
-                "description": "whether to sort in ascending order or descending order"
               }
             }
           },

@@ -1,6 +1,6 @@
 {
   "name": "swagger-param-sanitizer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Takes in raw string params from requests and parses them into the correct types according to the swagger doc",
   "main": "sanitizer.js",
   "scripts": {
