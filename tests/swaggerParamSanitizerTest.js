@@ -48,6 +48,28 @@ tape('get the defaults back from a request missing params with defaults',t=>{
   swaggerParamSanitizer(req,{},next)
 })
 
+tape('get the defaults back from a request missing params with defaults',t=>{
+  t.plan(4)
+
+  let req={
+    params:{},
+    body:{},
+    query:{
+      isAscOrder:false
+    },
+    method:'get',
+    url:'http://localhost/api/testNode0',
+    host:'http://localhost'
+  }
+  let next=()=>{
+    t.equal(req.params.limit,10,'limit should equal the integer 10')
+    t.equal(req.params.offset,0,'offset should equal the integer 0')
+    t.equal(req.params.orderBy,'id','orderBy should equal the string "id"')
+    t.equal(req.query.isAscOrder,false,'isAscOrder should equal the boolean FALSE')
+  }
+  swaggerParamSanitizer(req,{},next)
+})
+
 tape('get undefined params when params are undefined with no default',t=>{
   t.plan(3)
 

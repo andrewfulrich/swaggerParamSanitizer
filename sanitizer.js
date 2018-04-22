@@ -50,7 +50,7 @@ module.exports= function makeSanitizer(swagger) {
               break;
             case 'boolean':
               let val=Boolean(params[paramName])
-              if(params[paramName].toLowerCase() === 'false') {
+              if(params[paramName].toString().toLowerCase() === 'false') {
                 val=false
               }
               params[paramName] = val
